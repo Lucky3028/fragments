@@ -5,5 +5,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Exit
-        run: exit 0
+        run: exit 1
       - run: echo "aiueo"
