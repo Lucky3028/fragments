@@ -1,0 +1,9 @@
+name: test
+on: push
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Exit
+        run: exit 0
+      - run: echo "aiueo"
