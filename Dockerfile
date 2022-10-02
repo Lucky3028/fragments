@@ -8,7 +8,8 @@ RUN cd /var \
 RUN sudo find / | grep libmecab
 FROM clux/muslrust:1.64.0-nightly-2022-08-06 AS chef
 WORKDIR /app
-COPY --from=prepare /usr/lib/x86_64-linux-gnu/mecab /usr/lib/x86_64-linux-gnu/mecab
+COPY --from=prepare /usr/lib/x86_64-linux-gnu/lmecab* /usr/lib/x86_64-linux-gnu/
+COPY --from=prepare /usr/lib/x86_64-linux-gnu/mecab /usr/lib/x86_64-linux-gnu/
 COPY --from=prepare /usr/bin/mecab /usr/bin/
 
 ENTRYPOINT ["/bin/bash", "-c"]
