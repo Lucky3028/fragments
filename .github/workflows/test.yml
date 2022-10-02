@@ -28,9 +28,15 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           builder: ${{ steps.buildx.outputs.name }}
+          load: true
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: test
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          
+      - uses: addnab/docker-run-action@v3
+        with:
+          image: test:latest
+          run: |
+            /usr/bin/mecab
+            ldconfig -p | grep /usr/local/lib
