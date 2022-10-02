@@ -7,6 +7,6 @@ WORKDIR /app
 COPY --from=prepare /usr/lib/x86_64-linux-gnu/lmecab* /usr/lib/x86_64-linux-gnu/
 # COPY --from=prepare /usr/lib/x86_64-linux-gnu/mecab /usr/lib/x86_64-linux-gnu/
 COPY --from=prepare /usr/bin/mecab /usr/bin/
-RUN sudo ldconfig && echo "あいうえお" | mecab
+RUN sudo find / | grep libmecab
 
 ENTRYPOINT ["/bin/bash", "-c"]
