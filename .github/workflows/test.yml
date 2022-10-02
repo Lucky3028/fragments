@@ -19,4 +19,5 @@ jobs:
         with:
           image: test:latest
           run: |
-            sudo ldconfig -p | grep /usr/local/lib
+            sudo ldconfig
+            ldconfig -p | grep /usr/lib
