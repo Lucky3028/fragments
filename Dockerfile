@@ -11,4 +11,4 @@ WORKDIR /app
 COPY --from=prepare /usr/lib/x86_64-linux-gnu/mecab /usr/lib/x86_64-linux-gnu/mecab
 COPY --from=prepare /usr/bin/mecab /usr/bin/
 
-CMD ["/bin/bash"]
+ENTRYPOINT ["/bin/bash", "-c"]
