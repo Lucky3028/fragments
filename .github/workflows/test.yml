@@ -19,5 +19,4 @@ jobs:
         with:
           image: test:latest
           run: |
-            /usr/bin/mecab
-            ldconfig -p | grep /usr/local/lib
+            sudo ldconfig -p | grep /usr/local/lib
