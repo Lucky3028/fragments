@@ -6,6 +6,6 @@ WORKDIR /app
 COPY --from=prepare /usr/lib/x86_64-linux-gnu/lmecab* /usr/lib/x86_64-linux-gnu/
 # COPY --from=prepare /usr/lib/x86_64-linux-gnu/mecab /usr/lib/x86_64-linux-gnu/
 COPY --from=prepare /usr/bin/mecab /usr/bin/
-RUN echo "あいうえお" | mecab
+RUN ldconfig && echo "あいうえお" | mecab
 
 ENTRYPOINT ["/bin/bash", "-c"]
