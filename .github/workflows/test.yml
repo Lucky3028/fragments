@@ -5,19 +5,6 @@ jobs:
     name: Build Docker image, and Publish on main branch
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up Docker Buildx
-        id: buildx
-        uses: docker/setup-buildx-action@v2
-      - name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          builder: ${{ steps.buildx.outputs.name }}
-          load: true
-          tags: test
-      - uses: addnab/docker-run-action@v3
-        with:
-          image: test:latest
-          run: |
-            sudo ldconfig
-            ldconfig -p | grep /usr/lib
+      - run: |
+          docker run -d -p 8080:8080 --rm ghcr.io/lucky3028/mecab-server
+          curl -X POST -H 'Content-Type: application/json' -d "{"texts": ["8月3日"]}" http://localhost:8080/parse
