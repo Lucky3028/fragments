@@ -9,4 +9,5 @@ jobs:
           docker run -d -p 8080:8080 --rm ghcr.io/lucky3028/mecab-server
           docker container ls
           docker images
+          curl http://localhost:8080
           curl --verbose -X POST -H 'Content-Type: application/json' -d "{"texts": ["8月3日"]}" http://localhost:8080/parse
