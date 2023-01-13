@@ -10,5 +10,5 @@ runs:
     - id: output-sha
       run: |
         VALUE=$(git show --format='%h' --no-patch)
-        echo "sha=$(echo VALUE)" >> $GITHUB_OUTPUT
+        echo "sha=$VALUE" >> $GITHUB_OUTPUT
       shell: bash
