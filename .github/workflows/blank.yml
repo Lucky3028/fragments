@@ -15,4 +15,7 @@ jobs:
         id: sha
         uses: ./.github/actions/get-git-latest-sha
       - name: Run a one-line script
-        run: echo ${{ steps.sha.outputs.sha }}
+        run: |
+          echo ${{ steps.sha.outputs.sha }}
+          TAG_NAME=sha-${{ steps.sha.outputs.sha }}
+          echo $TAG_NAME
