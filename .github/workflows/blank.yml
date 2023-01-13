@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: output
+        id: sha
+	uses: ./.github/actions/get-git-latest-sha
       - name: Run a one-line script
-        run: |
-          sleep 10s
-          echo OK!
+        run: echo ${{ steps.sha.outputs.sha }}
