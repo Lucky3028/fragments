@@ -11,15 +11,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Run a one-line script
-        run: |
-          if !(type "reviewdog" > /dev/null 2>&1); then
-            REVIEWDOG_VERSION="0.14.1"
-            FILE_NAME="reviewdog_${REVIEWDOG_VERSION}_Linux_x86_64.tar.gz"
-            wget -q https://github.com/reviewdog/reviewdog/releases/download/v${REVIEWDOG_VERSION}/${FILE_NAME}
-            tar -zxvf "${FILE_NAME}"
-            rm -rf "${FILE_NAME}"
-            chmod +x ./reviewdog
-            sudo mv reviewdog /usr/local/bin
-          fi
-          reviewdog -version
+      - name: output
+        uses: ./.github/actions/get-git-latest-sha
