@@ -1,17 +1,21 @@
 name: CI
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - image: ghcr.io/giganticminecraft/seichi_minecraft_server_debug_base_1_12_2
+            build_context: ./docker-images/mcservers/debug/seichi-servers/base-images/1_12_2
+            image_ver: 1.0.0
+          - image: ghcr.io/giganticminecraft/seichi_minecraft_server_debug_seichi_1
+            build_context: ./docker-images/mcservers/debug/seichi-servers/individual-images/deb-s1
+            image_ver: 1.0.0
+          - image: ghcr.io/giganticminecraft/seichi_minecraft_server_debug_seichi_2
+            build_context: ./docker-images/mcservers/debug/seichi-servers/individual-images/deb-s2
+            image_ver: 1.0.0
     steps:
-      - uses: actions/checkout@v3
-      - run: yarn init -y
-      - run: yarn add http-server
-      - run: mkdir src && touch src/index.html
-      - run: yarn http-server src
+      - uses: actions/checkout@v4
+      - run: echo ${{ matrix.image }}
