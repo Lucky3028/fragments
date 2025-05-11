@@ -1,4 +1,5 @@
 name: CI
+run-name: CI ${{ matrix.image }}
 on:
   push:
 jobs:
