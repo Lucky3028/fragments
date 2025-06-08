@@ -10,6 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: docker image pull ghcr.io/giganticminecraft/seichi_minecraft_server_base:upstreamversion-java17-5ba4551
+      - run: docker image pull ghcr.io/giganticminecraft/seichi_minecraft_server_production_one_day_to_reset:sha-2b793ef
+      - run: docker container run -d -e EULA=TRUE ghcr.io/giganticminecraft/seichi_minecraft_server_production_one_day_to_reset:sha-2b793ef
       - name: Debug
         uses: mxschmitt/action-tmate@v3
