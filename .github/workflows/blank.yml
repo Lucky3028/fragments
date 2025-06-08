@@ -11,3 +11,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: docker image pull ghcr.io/giganticminecraft/seichi_minecraft_server_base:upstreamversion-java17-5ba4551
+      - name: Debug
+        uses: mxschmitt/action-tmate@v3
